@@ -139,6 +139,7 @@ body{
 }
 .no_books{
     color: var(--gray-bg);
+    text-align: center;
 }
 .books_container div{
     width: 65%;
@@ -178,9 +179,6 @@ body{
 
 
 
-
-
-
 @media (min-width : 671px) {
     .new_book_form{
         width: 250px;
@@ -193,11 +191,15 @@ body{
     
 }
 @media (max-width : 444px) {
+    .new_book_form {
+            width: 200px;
+        }
     input[data-input-type="nbr_pages"]::placeholder{
         font-size: 0.95em !important;
     }
     .messing_data{
         font-size: 13px;
-        left: -92px;
+        left: -66px;
+        width: 50px;
     }
 }

@@ -46,9 +46,8 @@ function addBookToLibrary(event) {
 
             form.style.display = "none";
             gray_bg.style.display = "none"
-            creat_book_card(author , title , nbr_pages , readed)
-
-            display_books();
+            creat_book_card(author, title, nbr_pages, readed)
+            check_empty();
         }
         else {
             document.querySelector(".error_duplicated").style.display="block"
@@ -111,15 +110,17 @@ function creat_book_card(author , title , nbr_pages , readed) {
     books_conotainer.appendChild(book_card);
     delete_book_div.addEventListener("click", () => {
         books_conotainer.removeChild(book_card)
+        
     })
+
 }
-function display_books(){
-    if (!myLibrary)
+function check_empty(){
+    if (!myLibrary) {
         document.querySelector(".no_books").style.display = "block";
+
+    }
     else {
         document.querySelector(".no_books").style.display = "none";
-
-        
     }
 
 }
@@ -186,13 +187,23 @@ function display_books(){
 document.addEventListener("DOMContentLoaded", () => {
     new_book_btn.addEventListener("click", () => {
         gray_bg.style.display = "block";
-        gray_bg.classList.add("show_gray_bg");
         form.style.display = "flex"
-        form.classList.add("show_new_book_form")
+        setTimeout(() => {
+            gray_bg.classList.add("show_gray_bg");
+            form.classList.add("show_new_book_form")    
+        },200)
+        
 
         gray_bg.addEventListener("click", () => {
-            form.style.display = "none";
-            gray_bg.style.display = "none"
+            setTimeout(() => {
+                gray_bg.classList.remove("show_gray_bg");
+                form.classList.remove("show_new_book_form")    
+            }, 200)
+            setTimeout(() => {
+                form.style.display = "none";
+                gray_bg.style.display = "none"    
+            },400)
+            
         })
 
         form_btn.addEventListener("click", addBookToLibrary)
